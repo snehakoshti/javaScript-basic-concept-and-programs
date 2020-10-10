@@ -8,15 +8,28 @@ if(true) {
     console.log(i); //ReferenceError: i is not defined
 }
 
-// var: is  scoped to "current execution context" AKA a variable's enclosing function or the global scope
+// var: is  scoped to "current execution context" AKA a variable's `enclosing function` or the `global scope`
 var varPet = "dog";
 console.log(varPet); // dog // (global scope)
 
 if(true) {
     var varFruit = "apple";
-    console.log(varFruit); // apple // (enclosing function scope)
+    console.log(varFruit); // apple // (global scope)
 }
-console.log(varFruit); //ReferenceError: varFruit is not defined
+console.log(varFruit); // apple // (global scope)
+
+function foo() {
+    var x = 1;
+    function bar() {
+      var y = 2;
+      console.log(x); // 1 (function `bar` closes over `x`)
+      console.log(y); // 2 (`y` is in enclosing function scope)
+    }
+    bar();
+    console.log(x); // 1 (`x` is in enclosing function scope)
+    console.log(y); // ReferenceError: y is not defined, `y` is scoped to `bar`
+  }
+  foo();
 
 
 
@@ -52,7 +65,7 @@ let dog = "rusty";
 console.log(window.dog); //undefined
 
 // var: creates a property on global window object when a var variable is created in global scope
-let fruit = "Orange";
+var fruit = "Orange";
 console.log(window.fruit); //Orange
 
 
@@ -66,4 +79,4 @@ let color = "red";
 
 // var: variable declaration is hoisted, and set to 'undefined'
 console.log(tree); //undefined
-let tree = "oak";
+var tree = "oak";
