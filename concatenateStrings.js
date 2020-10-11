@@ -23,7 +23,7 @@ console.log(['Hello', ' ', 'World'].join('')); // 'Hello World')
 
 // The first parameter to join() is called the separator. 
 // By default, the separator is a single comma ','.
-console.log(['a', 'b', 'c']).join(); // 'a,b,c')
+console.log(['a', 'b', 'c'].join()); // 'a,b,c'
 
 const fileName = ['hostname', 'tutorials', 'string-concat'].join('/');
 console.log(fileName); // 'hostname/fundamentals/string-concat'
